@@ -1,6 +1,7 @@
 import express, { Application } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
+import logger from '@logger';
 
 import routes from './routes/main';
 
@@ -17,7 +18,7 @@ class ServerHttp {
 
   startListen(port: number): void {
     this.server.listen(port, () => {
-      console.info(`Http Server listing in port:${port}`);
+      logger.info(`Http Server listing in port:${port}`);
     });
   }
 

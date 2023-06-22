@@ -2,8 +2,8 @@
   "compilerOptions": {
     "outDir": "./dist",
     "lib": ["es2015"],
-    "target": "ES2015",
-    "module": "commonjs",
+    "target": "ESNext",
+    "module": "ESNext",
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -13,9 +13,10 @@
     "baseUrl": "./src",
     "paths": {
       "@container": ["container.ts"],
+      "@logger": ["config/logger.ts"],
       "@config/*": ["config/*"],
       "@domain/*": ["domain/*"],
-      "@adapters/*": ["adapters/*"],
+      "@adapters/*": ["adapters/*"]
     }
   },
   "include": ["src/**/*"],
