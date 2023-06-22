@@ -8,7 +8,15 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "skipLibCheck": true,
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    // path aliases
+    "baseUrl": "./src",
+    "paths": {
+      "@container": ["container.ts"],
+      "@config/*": ["config/*"],
+      "@domain/*": ["domain/*"],
+      "@adapters/*": ["adapters/*"],
+    }
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]
