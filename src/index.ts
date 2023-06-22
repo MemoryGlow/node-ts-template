@@ -1,18 +1,11 @@
-import express, { Express } from 'express';
-const app = express();
+import 'module-alias/register';
+import 'dotenv/config';
 
-app.get('/', function (req, res) {
-  res.send('Hello World');
-});
-app.listen(3000);
+import Server from '@adapters/http/server';
+import config from '@config/global';
 
-function a() {
-  return console.log('algo');
-}
+const server = new Server(3000);
+server.startListen(config.app.port);
 
-function aa() {
-  return console.log('algo');
-}
-const b = () => {
-  console.log('a');
-};
+// useful for integration tests
+export default server;
