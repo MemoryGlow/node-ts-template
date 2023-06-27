@@ -1,12 +1,8 @@
-import { config as loadDotEnv } from 'dotenv';
-
-loadDotEnv();
-
-export const config = {
+const config = {
   env: process.env.NODE_ENV || 'dev',
   app: {
     port: Number(process.env.PORT || 3000),
-    logLevel: process.env.PINO_LOG_LEVEL || 'debug',
+    logLevel: process.env.LOG_LEVEL || 'debug',
   },
   db: {
     // type: process.env.DB_TYPE || 'sqlite',

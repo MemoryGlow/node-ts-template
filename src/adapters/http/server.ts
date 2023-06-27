@@ -1,25 +1,34 @@
 import express, { Application } from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
-import logger from '@logger';
 
+import logger from '@config/logger';
 import routes from './routes/main';
 
 class ServerHttp {
+  port: number;
   server: Application;
 
   constructor(port: number) {
     this.server = express();
+    this.port = port;
     this.setupMiddleware();
 
-    routes(this.server);
-    this.startListen(port);
+    this.setupRoutes();
   }
 
-  startListen(port: number): void {
-    this.server.listen(port, () => {
-      logger.info(`Http Server listing in port:${port}`);
+  startListen(): void {
+    const app = this.server.listen(this.port, () => {
+      logger.info(`Http Server listing in port:${this.port}`);
     });
+
+    process.on('SIGTERM', async () => {
+      app.close();
+    });
+  }
+
+  setupRoutes() {
+    routes(this.server);
   }
 
   setupMiddleware(): void {

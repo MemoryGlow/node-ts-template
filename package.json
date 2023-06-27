@@ -1,16 +1,16 @@
 {
-  "type": "module",
   "name": "node-typescript-template",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.ts",
   "author": "Danny Almeida <danny89@zoho.com>",
   "license": "MIT",
   "scripts": {
     "start": "node dist/index.js",
-    "build": "rimraf ./dist && tsc",
-    "dev": "tsx watch src/index.ts",
+    "build": "rimraf ./dist && tsc && tsc-alias",
+    "dev": "tsx watch src/index.ts --clear-screen=false",
     "lint": "eslint src/**/*.ts --fix",
-    "format": "npx prettier --write ."
+    "format": "npx prettier --write .",
+    "type-check": "tsc"
   },
   "husky": {
     "hooks": {
@@ -18,13 +18,15 @@
     }
   },
   "_moduleAliases": {
-    "@container": "dist/container.js",
     "@config": "dist/config",
     "@domain": "dist/domain",
-    "@adapters": "dist/adapters"
+    "@adapters": "dist/adapters",
+    "@container": "dist/container.js",
+    "@logger": "dist/config/logger.js"
   },
   "devDependencies": {
     "@eslint/create-config": "^0.4.5",
+    "@tsconfig/recommended": "^1.0.2",
     "@types/cors": "^2.8.13",
     "@types/express": "^4.17.17",
     "@types/node": "^20.3.1",
@@ -37,15 +39,20 @@
     "pino-pretty": "^10.0.0",
     "prettier": "^2.8.8",
     "rimraf": "^5.0.1",
+    "tsc-alias": "^1.8.6",
     "tsx": "^3.12.7",
     "typescript": "^5.0.1"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
+    "esm": "^3.2.25",
     "express": "^4.18.2",
     "helmet": "^7.0.0",
     "husky": "^8.0.3",
     "pino": "^8.14.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   }
 }

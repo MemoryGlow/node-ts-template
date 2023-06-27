@@ -6,7 +6,7 @@ const transport = pino.transport({
   options: { destination: 1 }, // use 2 for stderr
 });
 
-const log = pino(
+const logger = pino(
   {
     level: config.app.logLevel,
     base: {
@@ -25,4 +25,4 @@ const log = pino(
   transport
 );
 
-export default log;
+export default logger;

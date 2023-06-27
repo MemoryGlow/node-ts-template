@@ -1,10 +1,11 @@
-import 'module-alias/register';
 import 'dotenv/config';
 
-import Server from '@adapters/http/server';
 import config from '@config/global';
+import Server from '@adapters/http/server';
 
-const server = new Server(config.app.port);
+async function init() {
+  const server = new Server(config.app.port);
+  server.startListen();
+}
 
-// useful for integration tests
-export default server;
+init();
