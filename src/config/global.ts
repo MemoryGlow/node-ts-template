@@ -11,6 +11,10 @@ const config = {
     username: process.env.DB_USERNAME,
     password: process.env.DB_PASSWORD,
   },
+  logger: {
+    apiKey: process.env.LOGFLARE_API_KEY ?? '',
+    sourceToken: process.env.LOGFLARE_SOURCE_TOKEN ?? '',
+  },
 };
 
 export default config;
